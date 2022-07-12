@@ -17,17 +17,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-// objek yang digunakan untuk memfilter request dan hanya dijalankan satu kali disetiap ada satu request
 public class AuthTokenFilter extends OncePerRequestFilter {
-
     @Autowired
     private JwtUtils jwtUtils;
-
     @Autowired
     private UserDetailsServiceImpl userDetailsService;
-
     private static final Logger logger = LoggerFactory.getLogger(AuthTokenFilter.class);
-
     @Override
     protected void doFilterInternal(HttpServletRequest request,
                                     HttpServletResponse response,
@@ -50,7 +45,6 @@ public class AuthTokenFilter extends OncePerRequestFilter {
         filterChain.doFilter(request, response);
     }
 
-    // method untuk memfilter header dari request apakah ada Authorization apa tidak
     private String parseJwt(HttpServletRequest request) {
         String headerAuth = request.getHeader("Authorization");
 
