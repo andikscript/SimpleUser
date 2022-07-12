@@ -28,19 +28,14 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/api/auth")
 public class AuthController {
-
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private PasswordEncoder passwordEncoder;
-
     @Autowired
     private AuthenticationManager authenticationManager;
-
     @Autowired
     private JwtUtils jwtUtils;
-
     @Autowired
     private RefreshTokenService refreshTokenService;
 
@@ -78,7 +73,7 @@ public class AuthController {
     }
 
     @PostMapping(value = "/refreshtoken", consumes = "application/json")
-    public ResponseEntity<TokenRefreshResponse> refreshToken(@RequestBody TokenRefreshRequest tokenRefreshRequest) {
+    public  ResponseEntity<TokenRefreshResponse> refreshToken(@RequestBody TokenRefreshRequest tokenRefreshRequest) {
         String requestRefreshToken = tokenRefreshRequest.getRefreshToken();
 
         return refreshTokenService.findByToken(requestRefreshToken)
