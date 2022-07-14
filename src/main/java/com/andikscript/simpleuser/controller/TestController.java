@@ -41,4 +41,9 @@ public class TestController {
     public String rootAccess() {
         return "Root Content";
     }
+
+    @GetMapping(value = "/test")
+    public String testQuery(@RequestParam(name = "id") String id) {
+        return id;
+    }
 }
