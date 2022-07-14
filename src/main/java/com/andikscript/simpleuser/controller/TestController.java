@@ -1,19 +1,21 @@
 package com.andikscript.simpleuser.controller;
 
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping(value = "/api/test")
 public class TestController {
 
-    @GetMapping(value = "/all")
+    @GetMapping(value = {"/all", "/in", "one"})
     public String allAccess() {
         return "Public Contenttt";
+    }
+
+    @PostMapping(value = {"/all", "/in", "one"})
+    public String alllAccess() {
+        return "Public";
     }
 
     @GetMapping(value = "/user")
