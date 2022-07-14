@@ -51,6 +51,11 @@ public class AuthController {
             return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
         }
 
+        if (userService.findByUsername(user.getUsername()).isPresent()) {
+            return ResponseEntity.status(HttpStatus.FORBIDDEN)
+                    .body("User already created");
+        }
+
         String password = passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
         userService.addUser(user);
