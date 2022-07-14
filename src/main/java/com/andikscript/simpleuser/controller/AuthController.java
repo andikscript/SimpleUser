@@ -11,6 +11,7 @@ import com.andikscript.simpleuser.repository.UserRepository;
 import com.andikscript.simpleuser.security.jwt.JwtUtils;
 import com.andikscript.simpleuser.security.jwt.RefreshTokenService;
 import com.andikscript.simpleuser.security.service.UserDetailsImpl;
+import com.andikscript.simpleuser.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +29,9 @@ import java.util.stream.Collectors;
 @RestController
 @RequestMapping(value = "/api/auth")
 public class AuthController {
+
     @Autowired
-    private UserRepository userRepository;
+    private UserService userService;
     @Autowired
     private PasswordEncoder passwordEncoder;
     @Autowired
@@ -48,7 +50,7 @@ public class AuthController {
 
         String password = passwordEncoder.encode(user.getPassword());
         user.setPassword(password);
-        userRepository.save(user);
+        userService.addUser(user);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
