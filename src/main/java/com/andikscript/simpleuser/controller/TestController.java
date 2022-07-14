@@ -8,14 +8,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/test")
 public class TestController {
 
-    @GetMapping(value = {"/all", "/in", "one"})
+    @GetMapping(value = "/all")
     public String allAccess() {
         return "Public Contenttt";
-    }
-
-    @PostMapping(value = {"/all", "/in", "one"})
-    public String alllAccess() {
-        return "Public";
     }
 
     @GetMapping(value = "/user")
@@ -40,10 +35,5 @@ public class TestController {
     @PreAuthorize("hasRole('ROOT')")
     public String rootAccess() {
         return "Root Content";
-    }
-
-    @GetMapping(value = "/test")
-    public String testQuery(@RequestParam(name = "id") String id) {
-        return id;
     }
 }
