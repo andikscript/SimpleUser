@@ -1,5 +1,5 @@
-# SimpleUser
-Simple signup and signin with spring boot and spring security json web token
+# Simple User - Rate Limit
+Simple signup and signin with spring boot json web token and rate limit
 
 ## Featured :
 - Spring Boot 
@@ -8,6 +8,7 @@ Simple signup and signin with spring boot and spring security json web token
 - JWT Authentication & Authorization
 - JWT Token
 - Refresh Token
+- Rate Limit
 
 ## Roles
 - USER
