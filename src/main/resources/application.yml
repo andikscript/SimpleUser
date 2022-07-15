@@ -1,2 +1,26 @@
 server:
-  port: 80
+  port: 8080
+
+bucket4j:
+  enabled: true
+  filters:
+    - cache-name: buckets
+      url: /api/test/all*
+      rate-limits:
+        - bandwidths:
+#            limit akses sebanyak 1 kali
+            - capacity: 1
+#              dalam 5 detik
+              time: 5
+              unit: seconds
+    - cache-name: buckets
+      url: /api/test/user*
+      rate-limits:
+        - bandwidths:
+            - capacity: 2
+              time: 5
+              unit: seconds
+spring:
+  cache:
+    jcache:
+      config: ehcache.xml
