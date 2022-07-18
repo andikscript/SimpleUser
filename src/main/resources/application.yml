@@ -8,18 +8,40 @@ bucket4j:
       url: /api/test/all*
       rate-limits:
         - bandwidths:
-#            limit akses sebanyak 1 kali
-            - capacity: 1
-#              dalam 5 detik
-              time: 5
-              unit: seconds
+              # limit akses sebanyak 1 kali
+            - capacity: 5
+              # dalam 5 detik
+              time: 1
+              unit: minutes
     - cache-name: buckets
       url: /api/test/user*
       rate-limits:
         - bandwidths:
-            - capacity: 2
-              time: 5
-              unit: seconds
+            - capacity: 6
+              time: 1
+              unit: minutes
+    - cache-name: buckets
+      url: /api/test/mod*
+      rate-limits:
+        - bandwidths:
+            - capacity: 7
+              time: 1
+              unit: minutes
+    - cache-name: buckets
+      url: /api/test/admin*
+      rate-limits:
+        - bandwidths:
+            - capacity: 8
+              time: 1
+              unit: minutes
+    - cache-name: buckets
+      url: /api/test/root*
+      rate-limits:
+        - bandwidths:
+            - capacity: 9
+              time: 1
+              unit: minutes
+
 spring:
   cache:
     jcache:
