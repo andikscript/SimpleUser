@@ -8,7 +8,7 @@ Simple signup and signin with spring boot json web token and rate limit
 - JWT Authentication & Authorization
 - JWT Token
 - Refresh Token
-- Rate Limit
+- Rate Limit (Public, User, Moderator, Admin, Root Access)
 
 ## Roles
 - USER
