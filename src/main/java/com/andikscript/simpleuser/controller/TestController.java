@@ -1,5 +1,6 @@
 package com.andikscript.simpleuser.controller;
 
+import com.andikscript.simpleuser.webclient.WebClientService;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -8,13 +9,19 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(value = "/api/test")
 public class TestController {
 
+    private final WebClientService webClientService;
+
+    public TestController(WebClientService webClientService) {
+        this.webClientService = webClientService;
+    }
+
     @GetMapping(value = "/all")
     public String allAccess() {
-        return "Public Contenttt";
+        return "Public Contenttt " + webClientService.callShow();
     }
 
     @GetMapping(value = "/user")
-    @PreAuthorize("hasRole('USER')")
+    @PreAuthorize("hasRole('USER') or hasRole('ROOT')")
     public String userAccess() {
         return "User Content";
     }
