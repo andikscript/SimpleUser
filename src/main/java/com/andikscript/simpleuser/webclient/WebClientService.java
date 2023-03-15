@@ -16,4 +16,9 @@ public class WebClientService {
         return this.webClient.get().uri("/andik")
                 .retrieve().bodyToMono(String.class).block();
     }
+
+    public String callShowId(String id) {
+        return this.webClient.post().uri("/andik/{id}", id)
+                .retrieve().bodyToMono(String.class).block();
+    }
 }

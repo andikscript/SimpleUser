@@ -20,6 +20,11 @@ public class TestController {
         return "Public Contenttt " + webClientService.callShow();
     }
 
+    @GetMapping(value = "/all/{id}")
+    public String allAccessId(@PathVariable(value = "id") String id) {
+        return "Public Contenttt Id " + webClientService.callShowId(id);
+    }
+
     @GetMapping(value = "/user")
     @PreAuthorize("hasRole('USER') or hasRole('ROOT')")
     public String userAccess() {
